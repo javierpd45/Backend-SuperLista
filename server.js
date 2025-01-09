@@ -1,12 +1,21 @@
 // server.js
-const config = require('./config/config.js');
-const express = require('express');
-const app = express();
-console.log(`NODE_ENV=${config.NODE_ENV}`);
-app.get('/', (req, res) => {
-    res.send('Hello world');
+const app = require('./src/app'); // Importa la aplicación configurada
+const config = require('./config/config'); // Configuración desde config.js
+
+const PORT = config.PORT || 5000; // Obtiene el puerto desde la configuración
+
+// Inicia el servidor y muestra un mensaje en la consola
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://${config.HOST}:${PORT}`);
 });
-app.listen(config.PORT, config.HOST, function () {
-    console.log(`App listening on 
-http://${config.HOST}:${config.PORT}`);
-});
+
+
+// console.log(`NODE_ENV=${config.NODE_ENV}`);
+// app.get('/', (req, res) => {
+//     res.send('Hello world');
+// });
+
+// app.listen(config.PORT, config.HOST, function () {
+//     console.log(`App listening on 
+// http://${config.HOST}:${config.PORT}`);
+// });
