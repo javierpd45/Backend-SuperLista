@@ -1,18 +1,32 @@
-const express = require('express');
-const routes = require('./routes'); // Importa las rutas
-import { appMiddleware } from './middleware';
+import express from 'express'
+import { setupRoutes } from './routes/index.js';
+import { appMiddleware } from './middleware/index.js'
 
 const app = express();
 
 // Middleware para parsear JSON y datos codificados en URL
-appMiddleware(app);
+appMiddleware(app)
 
-// Define un prefijo para las rutas
-app.use('/api', routes);
+// Configuracion de rutas
+setupRoutes(app)
 
-// Ruta raíz para probar el servidor
-app.get('/', (req, res) => {
-  res.send('Servidor corriendo correctamente');
-});
+export default app;
 
-module.exports = app;
+// const express = require('express');
+// const routes = require('./routes'); // Importa las rutas
+// import { appMiddleware } from './middleware';
+
+// const app = express();
+
+// // Middleware para parsear JSON y datos codificados en URL
+// appMiddleware(app);
+
+// // Define un prefijo para las rutas
+// app.use('/api', routes);
+
+// // Ruta raíz para probar el servidor
+// app.get('/', (req, res) => {
+//   res.send('Servidor corriendo correctamente');
+// });
+
+// module.exports = app;

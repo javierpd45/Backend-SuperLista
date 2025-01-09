@@ -4,7 +4,7 @@ import path from 'path';
 
 // Carga el archivo correspondiente al entorno
 const env = process.env.NODE_ENV.trim() || 'development'
-const envFilePath = path.resolve('/config/${env}.env');
+const envFilePath = path.resolve(`./config/${env}.env`);
 
 dotenv.config({ path: envFilePath })
 
@@ -21,8 +21,8 @@ const config = {
   PORT: process.env.PORT || 3000,
   db: {
     host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 1433, // Puerto predeterminado para SQL Server
-    user: process.env.DB_USER || 'root',
+    port: process.env.DB_PORT || 5432, // Puerto predeterminado para Postgres SQL
+    user: process.env.DB_USER || 'postgres',
     password: process.env.DB_PASSWORD || '',
     name: process.env.DB_NAME || 'SuperListaDB',
   },

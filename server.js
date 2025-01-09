@@ -6,7 +6,7 @@ console.log({ config });
 
 // Inicia el servidor y muestra un mensaje en la consola
 app.listen(config.PORT, config.HOST, () => { // Obtiene el puerto desde la configuración
-  console.log(`Servidor corriendo en http://${config.HOST}:${PORT} en el ambiente ${config.NODE_ENV}`);
+  console.log(`Servidor corriendo en http://${config.HOST}:${config.PORT} en el ambiente ${config.NODE_ENV}`);
 });
 
 
