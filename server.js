@@ -1,12 +1,12 @@
 // server.js
-const app = require('./src/app'); // Importa la aplicación configurada
-const config = require('./config/config'); // Configuración desde config.js
+import app from './src/app.js' // Importa la aplicación configurada
+import config from './config/config.js' // Configuración desde config.js
 
-const PORT = config.PORT || 5000; // Obtiene el puerto desde la configuración
+console.log({ config });
 
 // Inicia el servidor y muestra un mensaje en la consola
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://${config.HOST}:${PORT}`);
+app.listen(config.PORT, config.HOST, () => { // Obtiene el puerto desde la configuración
+  console.log(`Servidor corriendo en http://${config.HOST}:${PORT} en el ambiente ${config.NODE_ENV}`);
 });
 
 

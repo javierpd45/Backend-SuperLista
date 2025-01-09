@@ -1,10 +1,11 @@
 const express = require('express');
-const app = express();
 const routes = require('./routes'); // Importa las rutas
+import { appMiddleware } from './middleware';
+
+const app = express();
 
 // Middleware para parsear JSON y datos codificados en URL
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+appMiddleware(app);
 
 // Define un prefijo para las rutas
 app.use('/api', routes);
