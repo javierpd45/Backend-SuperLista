@@ -1,17 +1,10 @@
-// // Importa subrutas (usuarios, productos, categorías)
-// const userRoutes = require('./userRoutes');
-// const categoryRoutes = require('./categoryRoutes');
-// const productRoutes = require('./productRoutes');
-
-
-import pool from "../../config/database.js";
-
-// // Define las rutas
-// router.use('/usuarios', userRoutes);
-// router.use('/categorias', categoryRoutes);
-// router.use('/productos', productRoutes);
+import pool from '../../config/database.js';
+import usuarioRouter from './usuarioRoutes.js'
 
 export const setupRoutes = (app) => {
+
+    app.use('/usuarios', usuarioRouter)
+
     app.get('/', async(req, res) => {
         try {
             const result = await pool.query('SELECT NOW()')
@@ -23,4 +16,5 @@ export const setupRoutes = (app) => {
             res.status(500).json({message: 'No se pudo conectar.', error})
         }
     });
+
 };
