@@ -5,9 +5,11 @@ const router = Router();
 
 // Rutas de usuarios
 // POSTs
-router.post('/', usuarioController.createUser);
+router.post('/create', usuarioController.createUser);
+
+router.post('/auth', usuarioController.authUser);
 
 // GETs
-router.get('/', usuarioController.authUser);
+router.get('/', usuarioController.getUsuarios);
 
 export default router;

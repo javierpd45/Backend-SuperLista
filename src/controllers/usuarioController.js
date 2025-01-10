@@ -2,16 +2,9 @@ import * as usuarioModel from '../models/usuarioModel.js'
 
 export const createUser = async (req, res) => {
     try {
-        const {
-            nombre,
-            email,
-            password
-        } = req.body
-        const newUser = await usuarioModel.insertUser(
-            nombre,
-            email,
-            password
-        )
+        const {nombre, email, password} = req.body
+        console.log(nombre, email, password)
+        const newUser = await usuarioModel.insertUser(nombre, email, password)
         res.status(201).json(newUser)
     } catch (error) {
         console.error(error.message)
@@ -21,17 +14,16 @@ export const createUser = async (req, res) => {
 
 export const authUser = async (req, res) => {
     try {
-        const {
-            email,
-            password
-        } = req.body
-        const newAuth = await usuarioModel.authUserMod(
-            email,
-            password
-        )
+        const {email, password} = req.body
+        const newAuth = await usuarioModel.authUserMod(email, password)
         res.status(201).json(newAuth)
     } catch (error) {
         console.error(error.message)
         res.status(500).json({ message: "Error, no se pudo autenticar el usuario." })
     }
+}
+
+export const getUsuarios = async (req, res) => {
+    const usuarios = await usuarioModel.selectUsuarios()
+    res.status(201).json(usuarios)
 }
