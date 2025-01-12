@@ -1,9 +1,15 @@
-import pool from '../../config/database.js';
+import pool from '../../config/database.js'
 import usuarioRouter from './usuarioRoutes.js'
+import categoriaRouter from './categoriaRoutes.js'
+import productoRouter from './productoRoutes.js'
 
 export const setupRoutes = (app) => {
 
     app.use('/usuarios', usuarioRouter)
+
+    app.use('/categorias', categoriaRouter)
+
+    app.use('/productos', productoRouter)
 
     app.get('/', async(req, res) => {
         try {

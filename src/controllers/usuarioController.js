@@ -24,6 +24,11 @@ export const authUser = async (req, res) => {
 }
 
 export const getUsuarios = async (req, res) => {
-    const usuarios = await usuarioModel.selectUsuarios()
-    res.status(201).json(usuarios)
+    try {
+        const usuarios = await usuarioModel.selectUsuarios()
+        res.status(201).json(usuarios)   
+    } catch (error) {
+        console.error(error.message)
+        res.status(500).json({ message: "Error, no se pudieron obtener los usuarios" })
+    }
 }
